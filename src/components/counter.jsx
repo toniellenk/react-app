@@ -10,15 +10,27 @@ class Counter extends Component {
     this.setState({ value: this.state.value + 1 });
   };
 
+  handleDecrement = () => {
+    if (this.state.value === 0) return;
+    this.setState({ value: this.state.value - 1 });
+  };
+
   render() {
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={this.handleIncrement}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm m-2"
         >
-          Increment
+          (+) Increment
+        </button>
+        <button
+          onClick={this.handleDecrement}
+          className="btn btn-secondary btn-sm m-2"
+          style={{ backgroundColor: "brown" }}
+        >
+          (-) Decrement
         </button>
         <button
           onClick={() => this.props.onDelete(this.props.id)}
